@@ -1,0 +1,431 @@
+{
+  "datasets": [
+    {
+      "name": "9cc1b959",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_high_risk_cards;\n"
+      ]
+    },
+    {
+      "name": "1d853dcb",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_high_risk_cards;\n"
+      ]
+    },
+    {
+      "name": "290c8c0d",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_high_risk_cards;\n"
+      ]
+    },
+    {
+      "name": "b1abb0f3",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_high_risk_cards;\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "ad59ade6",
+      "displayName": "ADVANCED GOLD FRAUD METRICS",
+      "layout": [
+        {
+          "widget": {
+            "name": "40cb05fd",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9cc1b959",
+                  "fields": [
+                    {
+                      "name": "card1",
+                      "expression": "`card1`"
+                    },
+                    {
+                      "name": "sum(fraud_txns)",
+                      "expression": "SUM(`fraud_txns`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "card1",
+                  "axis": {
+                    "title": "Cards of Froud Transactions"
+                  },
+                  "displayName": "Cards of Froud Transactions",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(fraud_txns)",
+                  "axis": {
+                    "title": "Sum of Froud transactions by cards"
+                  },
+                  "displayName": "Sum of Froud transactions by cards",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Sum of Fraud Transaction By Cards",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "7fbd0ed1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9cc1b959",
+                  "fields": [
+                    {
+                      "name": "card1",
+                      "expression": "`card1`"
+                    },
+                    {
+                      "name": "avg(total_txns)",
+                      "expression": "AVG(`total_txns`)"
+                    },
+                    {
+                      "name": "avg(fraud_txns)",
+                      "expression": "AVG(`fraud_txns`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "card1",
+                  "axis": {
+                    "title": "Cards Number"
+                  },
+                  "displayName": "Cards Number",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fields": [
+                    {
+                      "fieldName": "avg(total_txns)",
+                      "displayName": "Sum of Total Txns"
+                    },
+                    {
+                      "fieldName": "avg(fraud_txns)",
+                      "displayName": "Sum of Froud Txns"
+                    }
+                  ],
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Fraud vs Legitimate Transaction Comparison",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "group"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ae44c10c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "290c8c0d",
+                  "fields": [
+                    {
+                      "name": "fraud_txns",
+                      "expression": "`fraud_txns`"
+                    },
+                    {
+                      "name": "fraud_rate",
+                      "expression": "`fraud_rate`"
+                    },
+                    {
+                      "name": "card1",
+                      "expression": "`card1`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "fraud_rate",
+                  "axis": {
+                    "title": "Froud Rate"
+                  },
+                  "displayName": "Froud Rate",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "card1",
+                  "axis": {
+                    "title": "Cards Number"
+                  },
+                  "displayName": "Cards Number",
+                  "scale": {
+                    "type": "quantitative",
+                    "domain": {
+                      "min": 7916,
+                      "max": 15000
+                    }
+                  }
+                },
+                "size": {
+                  "fieldName": "fraud_txns",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Fraud Transactions Amount by Each Card Over Fraud Rate",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "341d615d",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b1abb0f3",
+                  "fields": [
+                    {
+                      "name": "card1",
+                      "expression": "`card1`"
+                    },
+                    {
+                      "name": "total_txns",
+                      "expression": "`total_txns`"
+                    },
+                    {
+                      "name": "fraud_txns",
+                      "expression": "`fraud_txns`"
+                    },
+                    {
+                      "name": "fraud_rate",
+                      "expression": "`fraud_rate`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "card1",
+                    "numberFormat": "0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "integer",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100000,
+                    "title": "Card Number",
+                    "allowSearch": true,
+                    "alignContent": "center",
+                    "allowHTML": true,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "total_txns",
+                    "numberFormat": "0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "integer",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100001,
+                    "title": "Total Transactions",
+                    "allowSearch": false,
+                    "alignContent": "center",
+                    "allowHTML": true,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "fraud_txns",
+                    "numberFormat": "0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "integer",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100002,
+                    "title": "Fraud Transactions",
+                    "allowSearch": false,
+                    "alignContent": "center",
+                    "allowHTML": true,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "fraud_rate",
+                    "numberFormat": "0.00",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "float",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100003,
+                    "title": "Fraud Rate",
+                    "allowSearch": true,
+                    "alignContent": "center",
+                    "allowHTML": true,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  }
+                ]
+              },
+              "invisibleColumns": [],
+              "allowHTMLByDefault": true,
+              "itemsPerPage": 25,
+              "paginationSize": "default",
+              "condensed": true,
+              "withRowNumber": true,
+              "frame": {
+                "title": "Detailed Table View for High Risk Card",
+                "showTitle": true,
+                "headerAlignment": "center"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

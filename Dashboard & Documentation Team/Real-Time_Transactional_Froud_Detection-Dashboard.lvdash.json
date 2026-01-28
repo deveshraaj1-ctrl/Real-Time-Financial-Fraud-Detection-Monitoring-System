@@ -1,0 +1,422 @@
+{
+  "datasets": [
+    {
+      "name": "2292a299",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_fraud_metrics_time\n",
+        "ORDER BY minute_ts DESC;\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "c5f7946f",
+      "displayName": "CORE GOLD FRAUD METRICS",
+      "layout": [
+        {
+          "widget": {
+            "name": "398d808c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2292a299",
+                  "fields": [
+                    {
+                      "name": "daily(minute_ts)",
+                      "expression": "DATE_TRUNC(\"DAY\", `minute_ts`)"
+                    },
+                    {
+                      "name": "sum(fraud_txns)",
+                      "expression": "SUM(`fraud_txns`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(minute_ts)",
+                  "axis": {
+                    "title": "Time (In Days and Month)"
+                  },
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(fraud_txns)",
+                  "axis": {
+                    "title": "Sum of Froud Transactions By Time"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              },
+              "frame": {
+                "title": "Sum of Froud Transactions By Month & Days",
+                "showTitle": true,
+                "headerAlignment": "center",
+                "showDescription": false
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "0c2aaa87",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2292a299",
+                  "fields": [
+                    {
+                      "name": "weekly(minute_ts)",
+                      "expression": "DATE_TRUNC(\"WEEK\", `minute_ts`)"
+                    },
+                    {
+                      "name": "count(fraud_rate)",
+                      "expression": "COUNT(`fraud_rate`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "weekly(minute_ts)",
+                  "axis": {
+                    "title": "Times ( In Days )",
+                    "hideLabels": false,
+                    "hideGrid": false
+                  },
+                  "displayName": "Times ( In Days )",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(fraud_rate)",
+                  "axis": {
+                    "title": "Count of Froud happened in Days"
+                  },
+                  "displayName": "Count of Froud happened in Days",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Count of Froud happened in Days",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "group"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "74f10932",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2292a299",
+                  "fields": [
+                    {
+                      "name": "fraud_txns",
+                      "expression": "`fraud_txns`"
+                    },
+                    {
+                      "name": "sum(total_txns)",
+                      "expression": "SUM(`total_txns`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fraud_txns",
+                  "axis": {
+                    "title": "Froud Transactions"
+                  },
+                  "displayName": "Froud Transactions",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_txns)",
+                  "axis": {
+                    "title": "Sum of Total Transactions"
+                  },
+                  "displayName": "Sum of Total Transactions",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Sum of Total Transactions",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "559b2d87",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2292a299",
+                  "fields": [
+                    {
+                      "name": "minute_ts",
+                      "expression": "`minute_ts`"
+                    },
+                    {
+                      "name": "total_txns",
+                      "expression": "`total_txns`"
+                    },
+                    {
+                      "name": "fraud_txns",
+                      "expression": "`fraud_txns`"
+                    },
+                    {
+                      "name": "fraud_rate",
+                      "expression": "`fraud_rate`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "minute_ts",
+                    "dateTimeFormat": "HH : mm",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "datetime",
+                    "displayAs": "datetime",
+                    "visible": true,
+                    "order": 100000,
+                    "title": "Time (HOUR : MINUTE)",
+                    "allowSearch": false,
+                    "alignContent": "center",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "total_txns",
+                    "numberFormat": "0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "integer",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100001,
+                    "title": "Total Transactions",
+                    "allowSearch": false,
+                    "alignContent": "center",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "fraud_txns",
+                    "numberFormat": "0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "integer",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100002,
+                    "title": "Froud Transactions",
+                    "allowSearch": true,
+                    "alignContent": "center",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false
+                  },
+                  {
+                    "fieldName": "fraud_rate",
+                    "numberFormat": "0.0",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "float",
+                    "displayAs": "number",
+                    "visible": true,
+                    "order": 100003,
+                    "title": "Fraud Rate ",
+                    "allowSearch": true,
+                    "alignContent": "center",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "cellFormat": {
+                      "default": {
+                        "foregroundColor": null
+                      },
+                      "rules": [
+                        {
+                          "if": {
+                            "column": "fraud_rate",
+                            "fn": ">",
+                            "literal": "0.2"
+                          },
+                          "value": {
+                            "foregroundColor": "#981717"
+                          }
+                        },
+                        {
+                          "if": {
+                            "column": "fraud_rate",
+                            "fn": "<=",
+                            "literal": "0.2"
+                          },
+                          "value": {
+                            "foregroundColor": "#356AFF"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "invisibleColumns": [],
+              "allowHTMLByDefault": false,
+              "itemsPerPage": 25,
+              "paginationSize": "default",
+              "condensed": true,
+              "withRowNumber": false,
+              "firstNFrozenColumns": 0,
+              "frame": {
+                "title": "Table Chart for Live Froud Monitoring",
+                "showTitle": true,
+                "headerAlignment": "center"
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "light": "#293BE7"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

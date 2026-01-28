@@ -1,0 +1,284 @@
+{
+  "datasets": [
+    {
+      "name": "0ab88926",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM angad_kumar91.fraud_detection_goldlayer.gold_latest_fraud_alerts;\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "c5384761",
+      "displayName": "Untitled Page",
+      "layout": [
+        {
+          "widget": {
+            "name": "8e2df14b",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0ab88926",
+                  "fields": [
+                    {
+                      "name": "weekly(event_timestamp)",
+                      "expression": "DATE_TRUNC(\"WEEK\", `event_timestamp`)"
+                    },
+                    {
+                      "name": "count(fraud_score)",
+                      "expression": "COUNT(`fraud_score`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "weekly(event_timestamp)",
+                  "axis": {
+                    "hideLabels": true,
+                    "title": "Most Recent Happened Froud "
+                  },
+                  "displayName": "Most Recent Happened Froud ",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(fraud_score)",
+                  "axis": {
+                    "title": "Count of Froud over Time"
+                  },
+                  "displayName": "Count of Froud over Time",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Most Recent Happened Froud Over Time",
+                "showTitle": true,
+                "headerAlignment": "center"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "270cfdc1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0ab88926",
+                  "fields": [
+                    {
+                      "name": "monthly(event_timestamp)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `event_timestamp`)"
+                    },
+                    {
+                      "name": "sum(TransactionAmt)",
+                      "expression": "SUM(`TransactionAmt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(event_timestamp)",
+                  "axis": {
+                    "title": "Time ( In Month )"
+                  },
+                  "displayName": "Time ( In Month )",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(TransactionAmt)",
+                  "axis": {
+                    "title": "Sum of Transaction Amount"
+                  },
+                  "displayName": "Sum of Transaction Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Sum of Total Amount Lost Each month",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "7e4bd398",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0ab88926",
+                  "fields": [
+                    {
+                      "name": "countdistinct(TransactionID)",
+                      "expression": "COUNT(DISTINCT `TransactionID`)"
+                    },
+                    {
+                      "name": "monthly(event_timestamp)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `event_timestamp`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "countdistinct(TransactionID)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Transaction ID in Percentage "
+                },
+                "color": {
+                  "fieldName": "monthly(event_timestamp)",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "mark": {
+                "layout": "stack"
+              },
+              "frame": {
+                "title": "Number Of Froud (%) In Last 4 Months",
+                "showTitle": true,
+                "headerAlignment": "center"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "364c6905",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0ab88926",
+                  "fields": [
+                    {
+                      "name": "daily(event_timestamp)",
+                      "expression": "DATE_TRUNC(\"DAY\", `event_timestamp`)"
+                    },
+                    {
+                      "name": "TransactionAmt",
+                      "expression": "`TransactionAmt`"
+                    },
+                    {
+                      "name": "TransactionID",
+                      "expression": "`TransactionID`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(event_timestamp)",
+                  "axis": {
+                    "title": "Time (In Days & Month)"
+                  },
+                  "displayName": "Time (In Days & Month)",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fields": [
+                    {
+                      "fieldName": "TransactionAmt"
+                    },
+                    {
+                      "fieldName": "TransactionID"
+                    }
+                  ],
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Froud Transaction Amount By Transaction ID in Days",
+                "showTitle": true,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "layout": "group"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
